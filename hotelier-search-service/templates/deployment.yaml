@@ -1,25 +1,26 @@
 apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { include "search-service.fullname" . } }
+  name: {{ include "search-service.fullname" . }}
   labels:
-    app: { { include "search-service.name" . } }
+    app: {{ include "search-service.name" . }}
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { { include "search-service.name" . } }
+      app: {{ include "search-service.name" . }}
   template:
     metadata:
       labels:
-        app: { { include "search-service.name" . } }
+        app: {{ include "search-service.name" . }}
     spec:
       containers:
         - name: search
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: { { .Values.service.targetPort } }
+            - containerPort: {{ .Values.service.targetPort }}
               name: http
           readinessProbe:
             httpGet:

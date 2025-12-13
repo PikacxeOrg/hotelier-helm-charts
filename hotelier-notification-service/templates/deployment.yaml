@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { include "notification-service.fullname" . } }
+  name: {{ include "notification-service.fullname" . }}
   labels:
-    app: { { include "notification-service.name" . } }
+    app: {{ include "notification-service.name" . }}
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { { include "notification-service.name" . } }
+      app: {{ include "notification-service.name" . }}
   template:
     metadata:
       labels:
-        app: { { include "notification-service.name" . } }
+        app: {{ include "notification-service.name" . }}
     spec:
       containers:
         - name: notification
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: { { .Values.service.targetPort } }
+            - containerPort: {{ .Values.service.targetPort }}
               name: http
           readinessProbe:
             httpGet:
