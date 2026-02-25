@@ -1,7 +1,7 @@
-{{- define "notification-service.name" -}}
+{{ define "notification-service.name" -}}
 notification-service
-{{- end -}}
+{{ end -}}
 
-{{- define "notification-service.fullname" -}}
-{{- printf "%s" (include "notification-service.name" .) -}}
-{{- end -}}
+{{ define "notification-service.fullname" -}}
+{{ printf "%s" (include "notification-service.name" .) -}}
+{{ end -}}

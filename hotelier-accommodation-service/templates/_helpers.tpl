@@ -1,7 +1,7 @@
-{{- define "accommodation-service.name" -}}
+{{ define "accommodation-service.name" -}}
 accommodation-service
-{{- end -}}
+{{ end -}}
 
-{{- define "accommodation-service.fullname" -}}
-{{- printf "%s" (include "accommodation-service.name" .) -}}
-{{- end -}}
+{{ define "accommodation-service.fullname" -}}
+{{ printf "%s" (include "accommodation-service.name" .) -}}
+{{ end -}}

@@ -1,7 +1,7 @@
-{{- define "availability-service.name" -}}
+{{ define "availability-service.name" -}}
 availability-service
-{{- end -}}
+{{ end -}}
 
-{{- define "availability-service.fullname" -}}
-{{- printf "%s" (include "availability-service.name" .) -}}
-{{- end -}}
+{{ define "availability-service.fullname" -}}
+{{ printf "%s" (include "availability-service.name" .) -}}
+{{ end -}}

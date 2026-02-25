@@ -1,7 +1,7 @@
-{{- define "reservation-service.name" -}}
+{{ define "reservation-service.name" -}}
 reservation-service
-{{- end -}}
+{{ end -}}
 
-{{- define "reservation-service.fullname" -}}
-{{- printf "%s" (include "reservation-service.name" .) -}}
-{{- end -}}
+{{ define "reservation-service.fullname" -}}
+{{ printf "%s" (include "reservation-service.name" .) -}}
+{{ end -}}

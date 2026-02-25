@@ -1,7 +1,7 @@
-{{- define "cdn-service.name" -}}
+{{ define "cdn-service.name" -}}
 cdn-service
-{{- end -}}
+{{ end -}}
 
-{{- define "cdn-service.fullname" -}}
-{{- printf "%s" (include "cdn-service.name" .) -}}
-{{- end -}}
+{{ define "cdn-service.fullname" -}}
+{{ printf "%s" (include "cdn-service.name" .) -}}
+{{ end -}}

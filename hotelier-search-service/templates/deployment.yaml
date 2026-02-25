@@ -35,5 +35,9 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Development"
+            {{ range $name, $value := .Values.env }}
+            - name: {{ $name }}
+              value: {{ $value | quote }}
+            {{ end }}
+          resources:
+            {{ toYaml .Values.resources | nindent 12 }}

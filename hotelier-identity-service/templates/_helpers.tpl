@@ -1,7 +1,7 @@
-{{- define "identity-service.name" -}}
+{{ define "identity-service.name" -}}
 identity-service
-{{- end -}}
+{{ end -}}
 
-{{- define "identity-service.fullname" -}}
-{{- printf "%s" (include "identity-service.name" .) -}}
-{{- end -}}
+{{ define "identity-service.fullname" -}}
+{{ printf "%s" (include "identity-service.name" .) -}}
+{{ end -}}

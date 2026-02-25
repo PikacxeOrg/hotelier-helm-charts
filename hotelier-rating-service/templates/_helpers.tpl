@@ -1,7 +1,7 @@
-{{- define "rating-service.name" -}}
+{{ define "rating-service.name" -}}
 rating-service
-{{- end -}}
+{{ end -}}
 
-{{- define "rating-service.fullname" -}}
-{{- printf "%s" (include "rating-service.name" .) -}}
-{{- end -}}
+{{ define "rating-service.fullname" -}}
+{{ printf "%s" (include "rating-service.name" .) -}}
+{{ end -}}
