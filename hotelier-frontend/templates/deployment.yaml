@@ -1,46 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "identity-service.fullname" . }}
+  name: {{ include "frontend.fullname" . }}
   labels:
-    app: {{ include "identity-service.name" . }}
+    app: {{ include "frontend.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "identity-service.name" . }}
+      app: {{ include "frontend.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "identity-service.name" . }}
+        app: {{ include "frontend.name" . }}
     spec:
       containers:
-        - name: identity
+        - name: frontend
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.targetPort }}
+            - containerPort: 80
               name: http
           readinessProbe:
             httpGet:
-              path: /health
+              path: /
               port: http
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: http
-            initialDelaySeconds: 15
+            initialDelaySeconds: 10
             periodSeconds: 20
           env:
-            {{ range $name, $value := .Values.env }}
+            {{- range $name, $value := .Values.env }}
             - name: {{ $name }}
               value: {{ $value | quote }}
-            {{ end }}
+            {{- end }}
           envFrom:
             - secretRef:
                 name: {{ .Values.secretRef | default "hotelier-secrets" }}
                 optional: true
           resources:
-            {{ toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.resources | nindent 12 }}

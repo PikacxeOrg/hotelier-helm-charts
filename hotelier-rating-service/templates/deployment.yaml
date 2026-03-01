@@ -38,5 +38,9 @@ spec:
             - name: {{ $name }}
               value: {{ $value | quote }}
             {{ end }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secretRef | default "hotelier-secrets" }}
+                optional: true
           resources:
             {{ toYaml .Values.resources | nindent 12 }}
